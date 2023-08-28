@@ -17,6 +17,7 @@ import org.apache.commons.csv.CSVPrinter
 import org.apache.commons.csv.CSVRecord
 import java.io.FileWriter
 import java.io.IOException
+import java.nio.charset.Charset
 import java.nio.file.Path
 import kotlin.io.path.isRegularFile
 import kotlin.io.path.readLines
@@ -113,7 +114,7 @@ fun writeChunks(
 ) {
     try {
         onWrite()
-        FileWriter(fileDir).use { fw ->
+        FileWriter(fileDir, Charset.forName("UTF-8")).use { fw ->
             val format = CSVFormat.EXCEL
                 .builder()
                 .setSkipHeaderRecord(false)
