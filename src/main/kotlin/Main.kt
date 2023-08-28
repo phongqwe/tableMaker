@@ -75,8 +75,10 @@ fun App() {
         if (errMsgList.isNotEmpty()) {
             errMsgList.forEach { err ->
                 ErrDialog(err = err) {
-                    status = ""
                     errMsgList = errMsgList.filter { it != err }
+                    if(errMsgList.isEmpty()){
+                        status = ""
+                    }
                 }
             }
 
